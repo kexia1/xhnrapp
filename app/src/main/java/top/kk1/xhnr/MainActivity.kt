@@ -106,7 +106,8 @@ class MainActivity : AppCompatActivity() {
         val contentEditText = findViewById<EditText>(R.id.content_edit_text)
         val filenameEditText = findViewById<EditText>(R.id.filename_edit_text)
         val showLogNumberCheckBox = findViewById<CheckBox>(R.id.show_log_number_checkbox)
-
+        val openFileCheckBox = findViewById<CheckBox>(R.id.open_file_checkbox)
+        val openFile = openFileCheckBox.isChecked
         val n = numEditText.text.toString().toIntOrNull() ?: return
         val content = contentEditText.text.toString()
         val filename = filenameEditText.text.toString()
@@ -155,17 +156,25 @@ class MainActivity : AppCompatActivity() {
             ).show()
 
             // 调用文件管理器跳转至保存文件的目录
-            val uri = FileProvider.getUriForFile(
-                this,
-                BuildConfig.APPLICATION_ID + ".fileprovider",
-                file
-            )
 
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.setDataAndType(uri, "text/plain")
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
-            startActivity(intent)
+
+
+            if (openFile) {
+                // 调用文件管理器打开刚生成的文件
+
+                val uri = FileProvider.getUriForFile(
+                    this,
+                    BuildConfig.APPLICATION_ID + ".fileprovider",
+                    file
+                )
+
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.setDataAndType(uri, "text/plain")
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+                startActivity(intent)
+            }
         } else {
             Toast.makeText(this, "文件写入失败", Toast.LENGTH_SHORT).show()
         }

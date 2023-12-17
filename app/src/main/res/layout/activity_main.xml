@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:layout_below="@+id/num_edit_view" android:autofillHints=""/>
+            android:layout_below="@+id/num_edit_view" android:autofillHints="" tools:ignore="LabelFor"/>
 
     <TextView
             android:id="@+id/content_text_view"
@@ -30,7 +30,7 @@
             android:id="@+id/content_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/content_text_view" />
+            android:layout_below="@id/content_text_view" android:autofillHints="" android:inputType="TODO"/>
 
     <TextView
             android:id="@+id/filename_text_view"
@@ -43,13 +43,21 @@
             android:id="@+id/filename_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/filename_text_view" />
+            android:layout_below="@id/filename_text_view" android:autofillHints="" android:inputType="TODO"
+            tools:ignore="LabelFor,TextFields"/>
 
     <CheckBox
             android:id="@+id/show_log_number_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/xh"
+            android:layout_below="@id/filename_edit_text" />
+    <CheckBox
+            android:id="@+id/open_file_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checkopenfie"
+            android:layout_alignParentEnd="true"
             android:layout_below="@id/filename_edit_text" />
 
     <Button
@@ -58,7 +66,7 @@
             android:layout_height="wrap_content"
             android:text="@string/createfile"
             android:layout_marginTop="16dp"
-            android:layout_below="@id/show_log_number_checkbox" />
+            android:layout_below="@id/open_file_checkbox" />
 
     <Button
             android:id="@+id/jump_button"

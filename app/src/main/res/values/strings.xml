@@ -6,4 +6,5 @@
     <string name="xh">显示循环序号</string>
     <string name="createfile">生成文件</string>
     <string name="cdml">跳转目录</string>
+    <string name="checkopenfie">生成后打开文件</string>
 </resources>
