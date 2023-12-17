@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import top.kk1.xhnr.BuildConfig
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -117,11 +118,19 @@ class MainActivity : AppCompatActivity() {
             ).show()
 
             // 调用文件管理器跳转至保存文件的目录
+            val uri = FileProvider.getUriForFile(
+                this,
+                BuildConfig.APPLICATION_ID + ".fileprovider",
+                file
+            )
+
             val intent = Intent(Intent.ACTION_VIEW)
-            val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
-            intent.setDataAndType(uri, "resource/folder")
+            intent.setDataAndType(uri, "text/plain")
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
             startActivity(intent)
+        } else {
+            Toast.makeText(this, "文件写入失败", Toast.LENGTH_SHORT).show()
         }
     }
 }
