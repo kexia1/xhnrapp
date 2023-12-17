@@ -30,7 +30,7 @@
             android:id="@+id/content_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/content_text_view" android:autofillHints="" android:inputType="TODO"/>
+            android:layout_below="@id/content_text_view" android:autofillHints=""/>
 
     <TextView
             android:id="@+id/filename_text_view"
@@ -43,7 +43,7 @@
             android:id="@+id/filename_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/filename_text_view" android:autofillHints="" android:inputType="TODO"
+            android:layout_below="@id/filename_text_view" android:autofillHints=""
             tools:ignore="LabelFor,TextFields"/>
 
     <CheckBox
