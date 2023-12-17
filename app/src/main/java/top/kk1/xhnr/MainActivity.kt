@@ -1,7 +1,9 @@
 package top.kk1.xhnr
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -10,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -112,8 +115,13 @@ class MainActivity : AppCompatActivity() {
                 "文件已生成在 ${file.absolutePath}",
                 Toast.LENGTH_LONG
             ).show()
-        } else {
-            Toast.makeText(this, "文件写入失败", Toast.LENGTH_SHORT).show()
+
+            // 调用文件管理器跳转至保存文件的目录
+            val intent = Intent(Intent.ACTION_VIEW)
+            val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
+            intent.setDataAndType(uri, "resource/folder")
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            startActivity(intent)
         }
     }
 }
