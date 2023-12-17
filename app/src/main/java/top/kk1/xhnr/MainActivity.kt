@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import top.kk1.xhnr.BuildConfig
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -26,10 +25,48 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         checkStoragePermission()
-
+        val jumpButton = findViewById<Button>(R.id.jump_button)
         val generateButton = findViewById<Button>(R.id.generate_button)
         generateButton.setOnClickListener {
             performFileOperations()
+        }
+        jumpButton.setOnClickListener {
+            val directory = getExternalFilesDir(null)
+            if (directory != null && directory.exists()) {
+                val directorys = getExternalFilesDir(null)
+                if (directorys != null) {
+                    if (!directorys.exists()) {
+                        directorys.mkdirs()
+                    }
+                }
+
+
+                val file = File(directorys, ".")
+                val oss = StringBuilder().toString()
+                val result = oss
+                try {
+                    FileOutputStream(file).use { stream ->
+                        stream.write(result.toByteArray())
+                        stream.flush()
+                    }
+
+                } catch (e: IOException) {
+                    e.printStackTrace()
+
+                }
+                val uri = FileProvider.getUriForFile(
+                    this,
+                    BuildConfig.APPLICATION_ID + ".fileprovider",
+                    file
+                )
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.setData(Uri.parse(directory.absolutePath))
+                intent.setDataAndType(uri, "text/plain")
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "目录不存在", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

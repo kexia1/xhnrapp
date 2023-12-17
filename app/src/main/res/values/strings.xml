@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">循环内容</string>
+    <string name="xhcs">循环次数：</string>
+    <string name="neirong">内容：</string>
+    <string name="filenames">文件名：</string>
+    <string name="xh">显示循环序号</string>
+    <string name="createfile">生成文件</string>
+    <string name="cdml">跳转目录</string>
 </resources>

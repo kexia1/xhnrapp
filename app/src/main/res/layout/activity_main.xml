@@ -1,62 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:padding="16dp"
-              tools:context=".MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                tools:context=".MainActivity">
 
     <TextView
+            android:id="@+id/num_edit_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="生成文件"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="重复次数：" />
+            android:text="@string/xhcs" />
 
     <EditText
             android:id="@+id/num_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:layout_below="@+id/num_edit_view" android:autofillHints=""/>
 
     <TextView
+            android:id="@+id/content_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="内容：" />
+            android:text="@string/neirong"
+            android:layout_below="@id/num_edit_text" />
 
     <EditText
             android:id="@+id/content_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
+            android:layout_height="wrap_content"
+            android:layout_below="@id/content_text_view" />
 
     <TextView
+            android:id="@+id/filename_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="文件名：" />
+            android:text="@string/filenames"
+            android:layout_below="@id/content_edit_text" />
 
     <EditText
             android:id="@+id/filename_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filename_text_view" />
+
     <CheckBox
             android:id="@+id/show_log_number_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="显示日志数字" />
+            android:text="@string/xh"
+            android:layout_below="@id/filename_edit_text" />
 
     <Button
             android:id="@+id/generate_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="生成文件"
-            android:layout_marginTop="16dp"/>
+            android:text="@string/createfile"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/show_log_number_checkbox" />
 
-</LinearLayout>
+    <Button
+            android:id="@+id/jump_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cdml"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/show_log_number_checkbox"/>
+
+</RelativeLayout>
