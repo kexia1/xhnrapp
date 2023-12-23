@@ -17,6 +17,11 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
+/**
+ *
+ * 114514
+ *
+ */
 class MainActivity : AppCompatActivity() {
     private val STORAGE_PERMISSION_REQUEST_CODE = 1
 
@@ -154,11 +159,6 @@ class MainActivity : AppCompatActivity() {
                 "文件已生成在 ${file.absolutePath}",
                 Toast.LENGTH_LONG
             ).show()
-
-            // 调用文件管理器跳转至保存文件的目录
-
-
-
 
             if (openFile) {
                 // 调用文件管理器打开刚生成的文件
